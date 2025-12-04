@@ -7,7 +7,12 @@ export default function CustomSelect() {
     // Options grouped by category
     const optionsGroups = [
         {
-            label: 'Température',
+            options: [
+                { value: 'imperial', label: 'Switch to Imperials' },
+            ]
+        },
+        {
+            label: 'Temperature',
             options: [
                 { value: 'celsius', label: 'Celsius (°C)' },
                 { value: 'fahrenheit', label: 'Fahrenheit (°F)' }
@@ -21,7 +26,7 @@ export default function CustomSelect() {
             ]
         },
         {
-            label: 'Précipitation',
+            label: 'Precipitation',
             options: [
                 { value: 'mm', label: 'Millimeters (mm)' },
                 { value: 'in', label: 'Inches (in)' }
@@ -37,18 +42,19 @@ export default function CustomSelect() {
                 <svg 
                 className={`absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} 
                 viewBox="0 0 20 20" 
-                fill="currentColor"
->
+                fill="currentColor">
                     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
             </button>
 
             {isOpen && (
-                <div className="absolute top-full mt-1 w-full bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                <div className="absolute right-0 w-[44vw] mt-[2vw] p-[2vw] bg-[hsl(243_23%_24%)] rounded-lg">
                     {optionsGroups.map((group, groupIndex) => (
                         <div key={groupIndex}>
+                            {/* Ligne séparatrice AVANT Wind Speed et Precipitation */}
+                            {groupIndex > 1 && <hr className="border-t-[0.5px] border-[hsl(240_6%_70%)]" />}
                             {/* Titre du groupe */}
-                            <div>
+                            <div className="text-[3vw] text-[hsl(240_6%_70%)] px-[2vw]">
                                 {group.label}
                             </div>
 
@@ -59,7 +65,7 @@ export default function CustomSelect() {
                                     onClick={() => {
                                         setSelected(option.label);
                                         setIsOpen(false);
-                                    }}>
+                                    }} className="text-[hsl(0_0%_100%)] text-[4vw] px-[2vw] my-[2vw] cursor-pointer hover:bg-[hsl(243_27%_20%)] rounded-xl">
                                     {option.label}
                                 </div>
                             ))}
