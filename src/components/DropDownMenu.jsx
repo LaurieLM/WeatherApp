@@ -31,10 +31,16 @@ export default function CustomSelect() {
 
     return (
         <div className="relative">
-            <button onClick={() => setIsOpen(!isOpen)} className="bg-gray-800 text-white px-4 py-2 rounded-lg flex items-center gap-2">
-                <img src="./src/assets/images/icon-units.svg" alt="" className="w-[4.5vw] absolute right-18 top-2" />
+            <button onClick={() => setIsOpen(!isOpen)} className="relative w-[26vw] h-[5vh] bg-[hsl(243_23%_24%)] text-[hsl(0_0%_100%)] text-[4vw] px-2 py-1 rounded-md">
+                <img src="./src/assets/images/icon-units.svg" alt="" className="w-[4.5vw] absolute right-18 top-1.5" />
                 {selected}
-                <span>▼</span>
+                <svg 
+                className={`absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} 
+                viewBox="0 0 20 20" 
+                fill="currentColor"
+>
+                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
             </button>
 
             {isOpen && (
