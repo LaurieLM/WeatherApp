@@ -1,8 +1,8 @@
 export default function NavBar() {
     return (
-        <header>
+        <header className="h-[10vh] p-[1rem]">
             <nav>
-                <h1>WeatherApp</h1>
+                <img src="./src/assets/images/logo.svg" alt="logo" className="w-35 h-12"/>
             </nav>
         </header>
     )
