@@ -36,7 +36,7 @@ export default function CustomSelect() {
 
     return (
         <div className="relative">
-            <button onClick={() => setIsOpen(!isOpen)} className="relative w-[26vw] h-[5vh] bg-[hsl(243_23%_24%)] text-[hsl(0_0%_100%)] text-[4vw] px-2 py-1 rounded-md">
+            <button onClick={() => setIsOpen(!isOpen)} className="relative w-[26vw] h-[5vh] bg-[hsl(243_23%_24%)]text-[4vw] px-2 py-1 rounded-md">
                 <img src="./src/assets/images/icon-units.svg" alt="" className="w-[4.5vw] absolute right-18 top-1.5" />
                 Units
                 <svg 
@@ -70,12 +70,12 @@ export default function CustomSelect() {
                                         } else {
                                             setSelectedValues([...selectedValues, option.value]);
                                         }
-                                    }} className={`text-[hsl(0_0%_100%)] text-[4vw] px-[2vw] my-[2vw] cursor-pointer ${selectedValues.includes(option.value) ? 'bg-[hsl(243_27%_20%)] rounded-md flex items-center justify-between' : 'hover:bg-[hsl(243_27%_20%)] rounded-md'}`}>
+                                    }} className={`text-[4vw] px-[2vw] my-[2vw] cursor-pointer ${selectedValues.includes(option.value) ? 'bg-[hsl(243_27%_20%)] rounded-md flex items-center justify-between' : 'hover:bg-[hsl(243_27%_20%)] rounded-md'}`}>
                                     {option.label}
 
                                     {/* Checkmark si option sélectionnée */}
                                     {selectedValues.includes(option.value) && (
-                                        <span className="text-white text-[4vw]">✓</span>
+                                        <span className="text-[4vw]">✓</span>
                                     )}
                                 </div>
                             ))}
