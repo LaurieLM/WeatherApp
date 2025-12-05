@@ -13,10 +13,13 @@ export default function SearchBar() {
 
     });
 
+    const longitude = data?.results?.[0]?.longitude;
+    const latitude = data?.results?.[0]?.latitude;
+
     const locationSearch = () => {
         setShouldSearch(true);
     }
-    console.log(data)
+
     return (
         <div className="relative flex flex-col items-center">
             <img src="./src/assets/images/icon-search.svg" alt="Search Icon" className="absolute left-[42px] top-[12px] w-[6vw]"/>
