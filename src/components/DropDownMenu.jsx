@@ -2,9 +2,9 @@ import { useState } from "react";
 
 export default function CustomSelect() {
     const [isOpen, setIsOpen] = useState(false);
-    const [selected, setSelected] = useState('Units');
+    const [selectedValues, setSelectedValues] = useState([]); // Tableau pour stocker plusieurs valeurs 
 
-    // Options grouped by category
+    // Options groupées par catégorie
     const optionsGroups = [
         {
             options: [
@@ -38,7 +38,7 @@ export default function CustomSelect() {
         <div className="relative">
             <button onClick={() => setIsOpen(!isOpen)} className="relative w-[26vw] h-[5vh] bg-[hsl(243_23%_24%)] text-[hsl(0_0%_100%)] text-[4vw] px-2 py-1 rounded-md">
                 <img src="./src/assets/images/icon-units.svg" alt="" className="w-[4.5vw] absolute right-18 top-1.5" />
-                {selected}
+                Units
                 <svg 
                 className={`absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} 
                 viewBox="0 0 20 20" 
@@ -53,6 +53,7 @@ export default function CustomSelect() {
                         <div key={groupIndex}>
                             {/* Ligne séparatrice AVANT Wind Speed et Precipitation */}
                             {groupIndex > 1 && <hr className="border-t-[0.5px] border-[hsl(240_6%_70%)]" />}
+
                             {/* Titre du groupe */}
                             <div className="text-[3vw] text-[hsl(240_6%_70%)] px-[2vw]">
                                 {group.label}
@@ -63,10 +64,19 @@ export default function CustomSelect() {
                                 <div
                                     key={option.value}
                                     onClick={() => {
-                                        setSelected(option.label);
-                                        setIsOpen(false);
-                                    }} className="text-[hsl(0_0%_100%)] text-[4vw] px-[2vw] my-[2vw] cursor-pointer hover:bg-[hsl(243_27%_20%)] rounded-xl">
+                                        // Si déjà sélectionnée, on la retire, sinon on l'ajoute
+                                        if (selectedValues.includes(option.value)) {
+                                            setSelectedValues(selectedValues.filter(v => v !== option.value));
+                                        } else {
+                                            setSelectedValues([...selectedValues, option.value]);
+                                        }
+                                    }} className={`text-[hsl(0_0%_100%)] text-[4vw] px-[2vw] my-[2vw] cursor-pointer ${selectedValues.includes(option.value) ? 'bg-[hsl(243_27%_20%)] rounded-md flex items-center justify-between' : 'hover:bg-[hsl(243_27%_20%)] rounded-md'}`}>
                                     {option.label}
+
+                                    {/* Checkmark si option sélectionnée */}
+                                    {selectedValues.includes(option.value) && (
+                                        <span className="text-white text-[4vw]">✓</span>
+                                    )}
                                 </div>
                             ))}
                         </div>
