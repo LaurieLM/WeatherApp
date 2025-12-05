@@ -1,11 +1,17 @@
 import { StrictMode } from 'react'
+// ROUTER
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+// REACT QUERY
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+// STYLES
 import './style.css'
+// PAGES
 import Layout from './pages/Layout.jsx';
 import Error from './pages/Error.jsx';
 import Home from './pages/Home.jsx';
 
+const client = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -31,6 +37,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={client}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </StrictMode>
 )
+
