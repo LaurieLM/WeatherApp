@@ -1,8 +1,9 @@
+import FirstTitle from '../components/FirstTitle.jsx';
 
 export default function Home() { 
     return (
         <>
-            <h2>Welcome to WeatherApp</h2>
+            <FirstTitle />
         </>
     )
 }
